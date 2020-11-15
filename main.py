@@ -29,16 +29,18 @@ class App(QtWidgets.QMainWindow, Ui_GraphsApp):
         expression = self.lineEdit.text()
 
         x = np.arange(-10, 10, 0.05)
-        y = np.arange(-10, 10, 0.05)
+        #y = np.arange(-10, 10, 0.05)
 
-        fig, ax = plt.subplots()
+        fig, ax = plt.subplots(figsize=(7, 6))
+        ax.plot(x, eval(expression))
 
-        ax.plot(y, eval(expression))
+        ax.set(title= f"График функции: { expression }")
+
         ax = plt.gca()
 
         #Настройка оси координат
         ax.spines['left'].set_position('center')
-        ax.spines['bottom'].set_position('center')
+        ax.spines['bottom'].set_position('zero')
         ax.spines['top'].set_visible(False)
         ax.spines['right'].set_visible(False)
 
